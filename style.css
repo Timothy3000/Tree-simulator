@@ -1,0 +1,61 @@
+button{
+    background-color: #da84b3; 
+    color: #430119;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    font-size: 20px;
+}
+.box{
+  text-align: center;
+}
+body{
+    background-color: #ffd2eb;
+    padding-bottom: 50px;
+}
+.h1{
+    color: #430119;
+    font-size: 40px;
+    font-weight: bold;
+}
+.ver{
+    color: #2b0010;
+    font-weight: bold;
+}
+.season{
+    text-align: right;
+}
+select{
+    background-color: #da84b3; 
+    color: #430119;
+    border: none;
+    border-radius: 15px;
+    font-size: 20px;
+    width: 75px;
+    height:44px;
+}
+.aut-ph img {
+    width: 550px;
+    height: 550px; 
+}
+.menu{
+    position: fixed;
+    z-index: 1000;
+    height: 50px;
+    bottom: 0;
+    left: 0;
+    border-radius: 15px;
+    background-color: #553547d0;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+    display: flex;
+    font-weight: bold;
+}
+i{
+    font-size: 25px;
+}
+@media screen and (max-width: 768px){
+    .aut-ph img {width: 300px; height: 300px; }
+}

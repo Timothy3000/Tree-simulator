@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Симулятор дерева-рост</title>
+    <link rel="icon" href="logo.jpg" type="image/png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons/css/all/all.css">
+</head>
+<body>
+    <div class="box">
+        <p class="h1">Симулятор дерева</p>
+        <div id="tree"></div>
+        <div class="menu">
+            <p style="color: #da84b3; font-size:20px;" onclick="out()">Завершить рост  |  </p>
+            <i class="fi fi-br-info" onclick="info()" style="color:#da84b3"></i>
+            <p style="color: #da84b3; font-size:20px;">  |  </p>
+            <i class="fi fi-sr-coffee-heart" style="color:#da84b3" onclick="opop()"></i>
+        </div>
+        <script>
+            window.onload = function() {
+                let x=0;
+                const fall = Math.floor(Math.random() * 101);
+                sessionStorage.setItem("fall", fall);
+                sessionStorage.setItem("x", x);
+                grow(x, fall);
+            }
+            function gc(){
+                let x = parseInt(sessionStorage.getItem("x"));
+                let fall = parseInt(sessionStorage.getItem("fall"));
+                grow(x,fall);
+            }
+            function grow(x, fall){
+                let season = sessionStorage.getItem("season");
+                let resim = sessionStorage.getItem("resim");
+                if (resim==="auto"){
+                    if (x<6 && season==="summer"){
+                        x++;
+                        let tree = "";
+                        if (x == 1) tree = "1.png";
+                        else if (x == 2) tree = "2.png";
+                        else if (x == 3) tree = "3.png";
+                        else if (x == 4) tree = "4.png";
+                        else if (x == 5) tree = "5.png";
+                        else if(x==6 && fall<10) tree="sum-fall.png";
+                        else tree="5.png";
+                        let treeContainer = document.getElementById("tree");
+                        treeContainer.className = 'aut-ph';
+                        treeContainer.innerHTML = '<img src="' + tree + '" alt="Дерево">';
+                        setTimeout(function() {
+                            grow(x,fall);
+                        }, 1500);
+                    }else if(x<5 && season==="autumn"){
+                        x++;
+                        let tree="";
+                        if (x==1){
+                            tree="aut-1.png";
+                        }
+                        else if (x==2){
+                            tree="aut-2.png";
+                        }
+                        else if (x==3){
+                            tree="aut-3.png";
+                        }
+                        else if (x==4){
+                            tree="aut-4.png";
+                        }
+                        else if (x==5){
+                            tree="aut-5.png";
+                        }
+                        let treeContainer = document.getElementById("tree");
+                        treeContainer.className = 'aut-ph';
+                        treeContainer.innerHTML = '<img src="' + tree + '" alt="Дерево">';
+                        setTimeout(function() {
+                            grow(x,fall);
+                        }, 1500);
+                    } else if ((season=="autumn" && x>=5 && fall>=10)||(season=="summer" && x>=6 && fall>=10)){
+                        let x=0;
+                        alert("Вы выиграли!");
+                        window.location.href = 'index.html';
+                    }else if(x>=6 && fall<10){
+                        alert("Дерево упало и кого-то раздавило.\nВы проиграли!")
+                        window.location.href = 'index.html';
+                    }else{
+                        alert("Извините, произошла какая-то ошибка(")
+                        window.location.href = 'index.html';
+                    }
+                    //
+                    //click
+                    //
+                }else if (resim==="click"){
+                    let x = sessionStorage.getItem("x");
+                    let fall = sessionStorage.getItem("fall");
+                    if (x===0){x=1;}
+                    if (x<6 && season==="summer"){
+                        x++;
+                        sessionStorage.setItem("x", x);
+                        let tree = "";
+                        if (x == 1) tree = "1.png";
+                        else if (x == 2) tree = "2.png";
+                        else if (x == 3) tree = "3.png";
+                        else if (x == 4) tree = "4.png";
+                        else if (x == 5) tree = "5.png";
+                        else if(x==6 && fall<10) tree="sum-fall.png"
+                        else tree="5.png"
+                        let treeContainer = document.getElementById("tree");
+                        treeContainer.className = 'aut-ph';
+                        treeContainer.innerHTML = '<img src="' + tree + '" alt="Дерево" onclick="gc()">';
+                    }else if(x<5 && season==="autumn"){
+                        x++;
+                        sessionStorage.setItem("x", x);
+                        let tree="";
+                        if (x==1){
+                            tree="aut-1.png";
+                        }
+                        else if (x==2){
+                            tree="aut-2.png";
+                        }
+                        else if (x==3){
+                            tree="aut-3.png";
+                        }
+                        else if (x==4){
+                            tree="aut-4.png";
+                        }
+                        else if (x==5){
+                            tree="aut-5.png";
+                        }
+                        let treeContainer = document.getElementById("tree");
+                        treeContainer.className = 'aut-ph';
+                        treeContainer.innerHTML = '<img src="' + tree + '" alt="Дерево" onclick="gc()">';
+                    } else if ((season=="autumn" && x>=5 && fall>=10)||(season=="summer" && x>=6 && fall>=10)){
+                        let x=0;
+                        alert("Вы выиграли!");
+                        window.location.href = 'index.html';
+                    }else if(x>=6 && fall<10){
+                        alert("Дерево упало и кого-то раздавило.\nВы проиграли!");
+                        window.location.href = 'index.html';
+                    }else{
+                        alert("Извините, произошла какая-то ошибка(");
+                        window.location.href = 'index.html';
+                    }
+                }
+            }
+        </script>
+        <script src="index.js"></script>
+    </div>
+</body>

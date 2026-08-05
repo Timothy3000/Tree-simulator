@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Симулятор дерева</title>
+    <link rel="icon" href="logo.jpg" type="image/png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons/css/all/all.css">
+</head>
+<body>
+    <div class="box">
+        <p class="h1">Симулятор дерева</p>
+        <div id="tree"></div>
+        <div><button onclick="sg()">Начать рост</button></div>
+        <div class="menu">
+            <select id="season">
+                <option value="summer">Лето</option>
+                <option value="autumn">Осень</option>
+            </select>
+            <select id="resim">
+                <option value="auto">Авто</option>
+                <option value="click">Кликер</option>
+            </select>
+            <p style="color: #da84b3; font-size:20px;">|</p>
+            <i class="fi fi-br-info" onclick="info()" style="color:#da84b3"></i>
+            <p style="color: #da84b3; font-size:20px;">  |  </p>
+            <i class="fi fi-sr-coffee-heart" style="color:#da84b3" onclick="opop()"></i>
+        </div>
+        <script>
+            function sg(){
+                let season_v = document.getElementById("season").value;
+                sessionStorage.setItem("season", season_v);
+                let resim_v = document.getElementById("resim").value;
+                sessionStorage.setItem("resim", resim_v);
+                window.location.href = 'grow.html';
+            }
+        </script>
+        <script src="index.js"></script>
+    </div>
+</body>
